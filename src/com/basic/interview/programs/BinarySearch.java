@@ -3,11 +3,11 @@ package com.basic.interview.programs;
 public class BinarySearch {
     // Returns index of x if it is present in arr[l..
     // r], else return -1
-    int binarySearch(int arr[],int l,int r, int x)
+    int binarySearch(int arr[],int first,int last, int x)
     {
-        if(r>=l)
+        if(last>=first)
         {
-            int mid = l+(r-l)/2;
+            int mid = (first+last)/2;
             //if the element is present at the middle itself
             if(arr[mid]==x)
             {
@@ -17,10 +17,10 @@ public class BinarySearch {
             //if element is smaller than mid, then it can only be present in left subarray
             if(arr[mid]>x)
             {
-                return binarySearch(arr,l,mid-1,x);
+                return binarySearch(arr,first,mid-1,x);
             }
             else
-                return binarySearch(arr,mid+1,r,x);
+                return binarySearch(arr,mid+1,last,x);
         }
         //we reach here when elements are not found in array
         return -1;
@@ -31,7 +31,8 @@ public class BinarySearch {
         BinarySearch bs = new BinarySearch();
         int arr[] = {2,4,6,7,13,23,66,79,86};
         int n = arr.length;
-        int x = 2;
+        System.out.println(n);
+        int x = 66;
         int result = bs.binarySearch(arr,0,n-1,x);
         if(result == -1)
             System.out.println("Element is not found");
